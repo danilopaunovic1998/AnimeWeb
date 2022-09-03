@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('watch_lists', function (Blueprint $table) {
-            $table->id();
+            $table->integer('user_id');
+            $table->integer('anime_id');
             $table->timestamps();
         });
     }

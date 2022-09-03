@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function watchList()
+    {
+        return $this->belongsToMany(Anime::class, 'watch_lists');
+    }
+
+    public function readList()
+    {
+        return $this->belongsToMany(Manga::class, 'read_lists');
+    }
 }

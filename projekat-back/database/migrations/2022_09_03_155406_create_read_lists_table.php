@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('read_lists', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('user_id');
+            $table->integer('manga_id');
         });
     }
 
