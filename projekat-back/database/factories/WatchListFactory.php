@@ -17,7 +17,8 @@ class WatchListFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'anime_id' => $this->faker->numberBetween(1, 10)
         ];
     }
 }

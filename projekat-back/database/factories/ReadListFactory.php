@@ -17,7 +17,8 @@ class ReadListFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'manga_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

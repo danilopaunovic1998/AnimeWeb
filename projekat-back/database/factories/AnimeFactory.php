@@ -17,7 +17,12 @@ class AnimeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title_eng' => $this->faker->firstNameMale(),
+            'title_jpn' => $this->faker->firstNameFemale(),
+            'img' => $this->faker->imageUrl(),
+            'episodes' => $this->faker->randomDigitNotNull(),
+            'status' => $this->faker->randomElement(['Airing', 'Finished']),
+            'synopsis' => $this->faker->sentence(7, true),
         ];
     }
 }
