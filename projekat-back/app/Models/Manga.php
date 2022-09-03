@@ -9,5 +9,5 @@ class Manga extends Model
 {
     use HasFactory;
 
-    public $incrementing = false;
+    //public $incrementing = false;
 }
