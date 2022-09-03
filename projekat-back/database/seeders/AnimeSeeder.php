@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Anime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class AnimeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Anime::factory(10)->create();
     }
 }
