@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ReadListController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\WatchListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('profile', function (Request $request) {
+        return auth()->user();
+    });
+    Route::get('/profile/watchlist', [WatchListController::class, 'index']);
+    Route::post('/profile/watchlist/{anime}', [WatchListController::class, 'store']);
+    Route::delete('/profile/watchlist/{anime}', [WatchListController::class, 'destroy']);
+
+    Route::get('/profile/readlist', [ReadListController::class, 'index']);
+    Route::post('/profile/skins/buy/{skin_id}', [ReadListController::class, 'store']);
+    Route::delete('/profile/skins/sell/{skin_id}', [ReadListController::class, 'destroy']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
