@@ -68,7 +68,7 @@ header {
 .main-div {
   background-color: black;
   border-top: 8px solid #3263aa;
-  height: 720px;
+  height: 2400px;
   width: auto;
 }
 
@@ -116,4 +116,72 @@ header {
   position: absolute;
   bottom: 15px;
   right: 10px;
+}
+
+.popular-container {
+  width: auto;
+  margin: 0 0 10px 0;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 10px;
+}
+
+.popular-container .details {
+  margin: 0;
+  padding: 7px;
+  float: left;
+  display: block;
+  position: relative;
+  border: 2px solid #2b2b2b;
+  font: normal 12px Tahoma, Arial, Helvetica, sans-serif;
+  color: white;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.popular-container .details h1 {
+  text-align: center;
+  color: #3263aa;
+  border-bottom: 2px solid #2b2b2b;
+  padding-bottom: 5px;
+}
+
+.popular-container .details .list-card {
+  margin: 0;
+  padding: 7px;
+  float: left;
+  display: block;
+  position: relative;
+  border: 2px solid #2b2b2b;
+  font: normal 12px Tahoma, Arial, Helvetica, sans-serif;
+  color: white;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.popular-container .details .list-card img {
+  float: left;
+  display: block;
+  position: relative;
+  margin-right: 15px;
+  max-width: 150px;
+  max-height: 330px;
+  margin: 0;
+  padding: 7px;
+  margin-right: 50px;
+}
+
+.popular-container .details .list-card h3 {
+  color: #3263aa;
+  font-size: 1.9em;
+  padding-bottom: 15px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.popular-container .details .list-card p {
+  font-size: 13px;
+  padding-right: 7px;
 }/*# sourceMappingURL=main.css.map */
