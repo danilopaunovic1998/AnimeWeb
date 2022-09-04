@@ -59,3 +59,62 @@ header {
     color:white;
 }
 
+.nav-div .border{
+    width: auto;
+    height: 5px;
+    background-color: #3263aa;
+}
+
+.main-div {
+    background-color: black;
+    border-top: 8px solid #3263aa;
+    height: 720px;
+    width: auto;
+}
+
+.random-container {
+    width: auto;
+    
+    margin: 0 0 10px 0;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 10px;
+}
+.random-container .details{
+    margin: 0;
+    padding: 7px;
+    float: left;
+    display: block;
+    position: relative;
+    border: 2px solid #2b2b2b;
+    font: normal 12px Tahoma, Arial, Helvetica, sans-serif;
+    color:white;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+.random-container .details img{
+    float: left;
+    margin-right: 15px;
+    max-width: 220px;
+    max-height: 330px;
+}
+.random-container .details h3 {
+    color: #3263aa;
+    font-size: 1.9em;
+    padding-bottom: 15px;
+}
+.random-container .details p {
+    font-size: 13px;
+    padding-right: 7px;
+    
+}
+
+.random-container .details .random-button {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+}
+
+
