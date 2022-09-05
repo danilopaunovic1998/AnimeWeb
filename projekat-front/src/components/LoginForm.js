@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm({ addToken, popup }) {
   const [userData, SetUserData] = useState({
     username: "",
     password: "",
@@ -25,6 +25,7 @@ function LoginForm() {
       .then((res) => {
         if (res.data.success === true) {
           window.sessionStorage.setItem("auth_token", res.data.access_token);
+          addToken(res.data.access_token);
           console.log(res);
           navigate("/");
         } else {
@@ -34,9 +35,9 @@ function LoginForm() {
       })
       .catch((e) => {
         console.log(e);
+        popup("Unsuccessful login!");
         ref.current.value = "";
         ref2.current.value = "";
-        //dodaj neki popup
       });
   }
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import RegisterForm from "../components/RegisterForm";
 
-function Register() {
+function Register({ popup }) {
   return (
     <div className="login-div">
-      <RegisterForm />
+      <RegisterForm popup={popup} />
     </div>
   );
 }

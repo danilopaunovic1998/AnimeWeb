@@ -1,9 +1,9 @@
 import LoginForm from "../components/LoginForm";
 import { useState } from "react";
-function Login() {
+function Login({ addToken, popup }) {
   return (
     <div className="login-div">
-      <LoginForm />
+      <LoginForm addToken={addToken} popup={popup} />
     </div>
   );
 }

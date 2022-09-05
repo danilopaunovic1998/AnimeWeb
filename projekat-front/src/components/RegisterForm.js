@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function RegisterForm() {
+function RegisterForm({ popup }) {
   const [userData, SetUserData] = useState({
     username: "",
     password: "",
@@ -28,7 +28,8 @@ function RegisterForm() {
   function handleRegister(e) {
     e.preventDefault();
     if (userData.password != userData.passwordagain) {
-      console.log("Passwords don't match");
+      popup("Passwords do not match!");
+      //console.log("Passwords don't match");
       refPS.current.value = "";
       refPSA.current.value = "";
       return;
@@ -41,6 +42,7 @@ function RegisterForm() {
       })
       .catch((e) => {
         console.log(e);
+        popup("Unsuccessful registration! Try again.");
         refUN.current.value = "";
         refPS.current.value = "";
         refEM.current.value = "";
