@@ -24,7 +24,7 @@ function Main({ page }) {
   console.log(random);
   return (
     <div className="main-div">
-      <Random random={random} generate={generate} />
+      <Random random={random} generate={generate} page={page} />
       <MostPopular page={page} />
     </div>
   );

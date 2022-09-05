@@ -19,4 +19,11 @@ export default class api {
 
     return response;
   };
+
+  static GETById = async (param) => {
+    var response = await fetch("https://api.jikan.moe/v4/" + param + "/full");
+
+    var data = await response.json();
+    return data.data;
+  };
 }

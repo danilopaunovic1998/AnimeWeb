@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import MangaPage from "./pages/MangaPage";
 import { useState } from "react";
 import Popup from "./components/Popup";
+import DisplayElement from "./pages/DisplayElement";
 
 function App() {
   const [token, SetToken] = useState();
@@ -39,6 +40,7 @@ function App() {
             path={"/register"}
             element={<Register popup={changePopup} />}
           ></Route>
+          <Route path="/display/:type/:id" element={<DisplayElement />}></Route>
         </Routes>
       </Router>
       <Popup data={popup} setTrigger={SetPopup} />
