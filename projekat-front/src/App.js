@@ -40,7 +40,10 @@ function App() {
             path={"/register"}
             element={<Register popup={changePopup} />}
           ></Route>
-          <Route path="/display/:type/:id" element={<DisplayElement />}></Route>
+          <Route
+            path="/display/:type/:id"
+            element={<DisplayElement popup={changePopup} />}
+          ></Route>
         </Routes>
       </Router>
       <Popup data={popup} setTrigger={SetPopup} />

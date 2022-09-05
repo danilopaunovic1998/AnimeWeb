@@ -4,7 +4,7 @@ import api from "../services/jikenAPI";
 import { useState } from "react";
 import axios from "axios";
 
-function DisplayElement() {
+function DisplayElement({ popup }) {
   let { id, type } = useParams();
   const [element, SetElement] = useState("");
   const ref = useRef(null);
@@ -27,6 +27,26 @@ function DisplayElement() {
 
   function handleAdd(e) {
     e.preventDefault();
+    var config = {
+      method: "post",
+      url: "http://127.0.0.1:8000/api/profile/watchlist/" + element.id,
+      headers: {
+        Authorization: "Bearer " + window.sessionStorage.auth_token,
+      },
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response));
+        if (response.data.success == true) {
+          popup("Anime is added to your watch list!");
+        } else {
+          popup("This anime is already in your watch list");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   return (
     <div className="main-div">

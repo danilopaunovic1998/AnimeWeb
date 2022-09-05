@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\WatchList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WatchListController extends Controller
 {
@@ -33,9 +35,20 @@ class WatchListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($anime_id)
     {
-        //
+        $wle = new WatchList;
+
+
+        $wle->user_id = Auth::user()->id;
+        $wle->anime_id = $anime_id;
+        $validation = is_null(DB::table("watch_lists")->where('user_id', '=', Auth::user()->id)->where('anime_id', '=', $anime_id)->first());
+        if ($validation) {
+
+            $wle->save();
+            return response()->json(["success" => true, "message" => "Anime is added to your watch list"]);
+        }
+        return response()->json(["success" => false, "data" => $validation]);
     }
 
     /**
