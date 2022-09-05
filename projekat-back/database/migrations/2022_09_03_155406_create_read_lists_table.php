@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('read_lists', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('manga_id');
+            $table->timestamps();
         });
     }
 

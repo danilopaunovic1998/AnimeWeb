@@ -27,9 +27,12 @@ function DisplayElement({ popup }) {
 
   function handleAdd(e) {
     e.preventDefault();
+    let listtype;
+    if (type == "anime") listtype = "watchlist/";
+    else listtype = "readlist/";
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/api/profile/watchlist/" + element.id,
+      url: "http://127.0.0.1:8000/api/profile/" + listtype + element.id,
       headers: {
         Authorization: "Bearer " + window.sessionStorage.auth_token,
       },
@@ -39,9 +42,9 @@ function DisplayElement({ popup }) {
       .then(function (response) {
         console.log(JSON.stringify(response));
         if (response.data.success == true) {
-          popup("Anime is added to your watch list!");
+          popup(response.data.message);
         } else {
-          popup("This anime is already in your watch list");
+          popup(response.data.message);
         }
       })
       .catch(function (error) {

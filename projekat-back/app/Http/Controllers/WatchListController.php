@@ -48,7 +48,7 @@ class WatchListController extends Controller
             $wle->save();
             return response()->json(["success" => true, "message" => "Anime is added to your watch list"]);
         }
-        return response()->json(["success" => false, "data" => $validation]);
+        return response()->json(["success" => false, "data" => $validation, "message" => "This anime is already in your watch list"]);
     }
 
     /**

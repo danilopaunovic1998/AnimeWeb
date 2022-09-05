@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ReadList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReadListController extends Controller
 {
@@ -33,9 +35,20 @@ class ReadListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($manga_id)
     {
-        //
+        $rle = new ReadList;
+
+
+        $rle->user_id = Auth::user()->id;
+        $rle->manga_id = $manga_id;
+        $validation = is_null(DB::table("read_lists")->where('user_id', '=', Auth::user()->id)->where('manga_id', '=', $manga_id)->first());
+        if ($validation) {
+
+            $rle->save();
+            return response()->json(["success" => true, "message" => "Manga is added to your read list"]);
+        }
+        return response()->json(["success" => false, "data" => $validation, "message" => "This manga is already added to your read list"]);
     }
 
     /**

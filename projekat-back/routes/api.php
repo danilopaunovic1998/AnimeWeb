@@ -29,8 +29,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/profile/watchlist/{anime}', [WatchListController::class, 'destroy']);
 
     Route::get('/profile/readlist', [ReadListController::class, 'index']);
-    Route::post('/profile/readList/{manga}', [ReadListController::class, 'store']);
-    Route::delete('/profile/readList/{manga}', [ReadListController::class, 'destroy']);
+    Route::post('/profile/readlist/{manga}', [ReadListController::class, 'store']);
+    Route::delete('/profile/readlist/{manga}', [ReadListController::class, 'destroy']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
