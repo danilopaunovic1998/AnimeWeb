@@ -9,7 +9,7 @@ function Random({ random, generate }) {
         <p className="synopsis">{random.synopsis}</p>
         <div className="random-button">
           <button
-            className="generateRandom"
+            className="myButton"
             onClick={(e) => {
               e.preventDefault();
               generate("/anime");
