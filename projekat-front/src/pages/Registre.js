@@ -3,7 +3,7 @@ import RegistreForm from "../components/RegistreForm";
 
 function Registre() {
   return (
-    <div className="Registre">
+    <div className="login-div">
       <RegistreForm />
     </div>
   );

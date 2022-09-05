@@ -184,4 +184,79 @@ header {
 .popular-container .details .list-card p {
   font-size: 13px;
   padding-right: 7px;
+}
+
+.login-div {
+  background-color: black;
+  border-top: 8px solid #3263aa;
+  height: 700px;
+  width: auto;
+}
+
+.login-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 10px;
+  display: block;
+  justify-content: center;
+}
+
+.myform {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 7px;
+  display: inline-block;
+  border: 2px solid #2b2b2b;
+  font: normal 12px Tahoma, Arial, Helvetica, sans-serif;
+  color: white;
+  height: 100%;
+  width: 50%;
+}
+
+.myform-group {
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.myform-group label {
+  font-size: 25px;
+  font-weight: bold;
+  color: #3263aa;
+  padding-right: 20px;
+  display: inline-block;
+  width: 300px;
+}
+
+.myform-group input {
+  width: 250px;
+}
+
+.myform-group a {
+  font-size: 30px;
+  color: #3263aa !important;
+}
+
+.myButton {
+  color: white;
+  font-size: 25px;
+  width: 60%;
+  line-height: 23px;
+  padding: 11px;
+  border-radius: 2px;
+  font: normal 23px Tahoma, Arial, Helvetica, sans-serif;
+  background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, #3263aa 50%, #3263aa 100%);
+  border: 2px solid rgb(28, 110, 164);
+  display: inline-block;
+}
+
+.myButton:hover {
+  background: #1C6EA4;
+}
+
+.myButton:active {
+  background: #144E75;
 }/*# sourceMappingURL=main.css.map */

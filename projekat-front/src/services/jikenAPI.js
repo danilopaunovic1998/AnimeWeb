@@ -8,7 +8,7 @@ export default class api {
 
   static GETTop = async (param) => {
     var query = "";
-    if (param == "/anime") {
+    if (param === "/anime") {
       query = "?q=type=tv&filter=bypopularity&page=1";
     } else {
       query = "?q=type=manga&filter=bypopularity&page=1";
