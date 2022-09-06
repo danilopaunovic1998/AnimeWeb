@@ -12,20 +12,20 @@
 
 .popup-inner {
     position: relative;
-    padding: 32px;
+    padding: 4.2%;
     top: 250px;
-    width:60%;
-    height: 25px;
+    width:70%;
+    height: 170px;
     max-width: 640px;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
     
     background-color: rgb(188, 186, 186);
 }
 
 .popup-inner .close-btn{
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 100px;
+    width: 120px;
     color: white;
     font: normal 23px Tahoma, Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, #3263aa 50%, #3263aa 100%);
@@ -37,13 +37,12 @@
 
 
 .popup-inner p {
-    position: absolute;
     top: 16px;
     left: 16px;
     font-size: 25px;
     font-weight: bold;
     color: #3263aa;
     padding-right: 20px;
-    display: inline-block;
+    display: block;
     width: auto;
 }

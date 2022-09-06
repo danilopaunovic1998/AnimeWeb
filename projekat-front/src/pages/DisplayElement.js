@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import api from "../services/jikenAPI";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function DisplayElement({ popup }) {
+function DisplayElement({ token, popup }) {
+  let navigate = useNavigate();
   let { id, type } = useParams();
   const [element, SetElement] = useState("");
   const ref = useRef(null);
@@ -30,26 +32,31 @@ function DisplayElement({ popup }) {
     let listtype;
     if (type == "anime") listtype = "watchlist/";
     else listtype = "readlist/";
-    var config = {
-      method: "post",
-      url: "http://127.0.0.1:8000/api/profile/" + listtype + element.id,
-      headers: {
-        Authorization: "Bearer " + window.sessionStorage.auth_token,
-      },
-    };
+    if (token == null) {
+      popup("Login or register");
+      navigate("/login");
+    } else {
+      var config = {
+        method: "post",
+        url: "http://127.0.0.1:8000/api/profile/" + listtype + element.id,
+        headers: {
+          Authorization: "Bearer " + window.sessionStorage.auth_token,
+        },
+      };
 
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response));
-        if (response.data.success == true) {
-          popup(response.data.message);
-        } else {
-          popup(response.data.message);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response));
+          if (response.data.success == true) {
+            popup(response.data.message);
+          } else {
+            popup(response.data.message);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
   return (
     <div className="main-div">

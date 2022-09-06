@@ -42,7 +42,7 @@ function App() {
           ></Route>
           <Route
             path="/display/:type/:id"
-            element={<DisplayElement popup={changePopup} />}
+            element={<DisplayElement token={token} popup={changePopup} />}
           ></Route>
         </Routes>
       </Router>
