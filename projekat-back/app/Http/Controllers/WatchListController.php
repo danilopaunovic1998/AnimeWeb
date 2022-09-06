@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\WatchListCollection;
 use App\Models\WatchList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class WatchListController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $wl = WatchList::all()->where('user_id', '=', $user->id);
+        return new WatchListCollection($wl);
     }
 
     /**

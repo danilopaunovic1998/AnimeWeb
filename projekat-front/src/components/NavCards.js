@@ -16,12 +16,14 @@ function NavCards() {
           </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link">WatchList</a>
+          <Link className="nav-link" to="/watchlist">
+            WatchList
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#!">
+          <Link className="nav-link" to="/readlist">
             ReadList
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

@@ -8,6 +8,8 @@ import MangaPage from "./pages/MangaPage";
 import { useState } from "react";
 import Popup from "./components/Popup";
 import DisplayElement from "./pages/DisplayElement";
+import WatchList from "./pages/WatchList";
+import ReadList from "./pages/ReadList";
 
 function App() {
   const [token, SetToken] = useState();
@@ -44,6 +46,8 @@ function App() {
             path="/display/:type/:id"
             element={<DisplayElement token={token} popup={changePopup} />}
           ></Route>
+          <Route path="/watchlist" element={<WatchList />}></Route>
+          <Route path="/readlist" element={<ReadList />}></Route>
         </Routes>
       </Router>
       <Popup data={popup} setTrigger={SetPopup} />

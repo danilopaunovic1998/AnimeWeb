@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReadListCollection;
 use App\Models\ReadList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class ReadListController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $wl = ReadList::all()->where('user_id', '=', $user->id);
+        return new ReadListCollection($wl);
     }
 
     /**
