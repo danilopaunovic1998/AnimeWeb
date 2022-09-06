@@ -269,6 +269,7 @@ header {
 .main-list-div {
   flex: 1 1 0%;
   padding: 0px 16px;
+  padding-bottom: 30px;
   background-color: black;
 }
 .main-list-div h1 {
@@ -281,6 +282,11 @@ header {
   flex-wrap: wrap;
   margin-top: 32px;
   margin: 32px -8px 0px;
+}
+.main-list-div .list-div h3 {
+  text-align: center;
+  color: #3263aa;
+  padding-top: 10px;
 }
 .main-list-div .list-div .cards {
   flex: 1 1 33.333%;

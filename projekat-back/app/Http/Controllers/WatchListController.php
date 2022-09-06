@@ -94,8 +94,9 @@ class WatchListController extends Controller
      * @param  \App\Models\WatchList  $watchList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WatchList $watchList)
+    public function destroy($anime)
     {
-        //
+        $deleted = DB::table("watch_lists")->where('user_id', '=', Auth::user()->id)->where('anime_id', '=', $anime)->delete();
+        return response()->json(["message" => "Anime was removed from youre watch list"]);
     }
 }

@@ -12,6 +12,14 @@ function ReadList({ token, popup }) {
   useEffect(() => {
     getListElements();
   }, []);
+  function removeElement(id) {
+    SetReadList((current) =>
+      current.filter((element) => {
+        return element.manga_id !== id;
+      })
+    );
+    //window.location.reload();
+  }
   function getListElements() {
     if (token == null) {
       popup("Login or registre");
@@ -39,14 +47,17 @@ function ReadList({ token, popup }) {
       <div className="main-list-div">
         <h1>My Read List</h1>
         <div className="list-div">
-          {readlist == null ? (
-            <h2>Your read list is empty</h2>
+          {readlist == null || readlist.length === 0 ? (
+            <h3>Your read list is empty</h3>
           ) : (
             readlist.map((manga) => (
               <ListElement
                 key={manga.manga_id}
                 element_id={manga.manga_id}
                 page={"manga/"}
+                popup={popup}
+                list={readlist}
+                removeElements={removeElement}
               />
             ))
           )}

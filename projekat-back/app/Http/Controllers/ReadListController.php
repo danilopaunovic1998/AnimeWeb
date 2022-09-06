@@ -94,8 +94,9 @@ class ReadListController extends Controller
      * @param  \App\Models\ReadList  $readList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReadList $readList)
+    public function destroy($manga)
     {
-        //
+        $deleted = DB::table("read_lists")->where('user_id', '=', Auth::user()->id)->where('manga_id', '=', $manga)->delete();
+        return response()->json(["message" => "Manga was removed from youre watch list"]);
     }
 }

@@ -35,20 +35,30 @@ function WatchList({ token, popup }) {
         console.log(error);
       });
   }
-  //console.log(watchlist);
+  function removeElement(id) {
+    SetWatchList((current) =>
+      current.filter((element) => {
+        return element.anime_id !== id;
+      })
+    );
+  }
+  console.log(watchlist);
   return (
     <div>
       <div className="main-list-div">
         <h1>My Watch List</h1>
         <div className="list-div">
-          {watchlist == null ? (
-            <h2>Your watch list is empty</h2>
+          {watchlist == null || watchlist.length == 0 ? (
+            <h3>Your watch list is empty</h3>
           ) : (
             watchlist.map((anime) => (
               <ListElement
                 key={anime.anime_id}
                 element_id={anime.anime_id}
                 page={"anime/"}
+                popup={popup}
+                list={watchlist}
+                removeElements={removeElement}
               />
             ))
           )}

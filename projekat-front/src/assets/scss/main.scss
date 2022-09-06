@@ -268,6 +268,7 @@ header {
     .main-list-div {
         flex: 1 1 0%;
 		padding: 0px 16px;
+        padding-bottom: 30px;
         background-color: black;
         
         h1 {
@@ -280,6 +281,12 @@ header {
 			flex-wrap: wrap;
 			margin-top: 32px;
 			margin: 32px -8px 0px;
+            //align-items: center;
+            h3 {
+                text-align: center;
+                color: #3263aa;
+                padding-top: 10px;
+            }
             .cards {
                 flex: 1 1 33.333%;
                 position: relative;
