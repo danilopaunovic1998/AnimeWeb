@@ -46,8 +46,14 @@ function App() {
             path="/display/:type/:id"
             element={<DisplayElement token={token} popup={changePopup} />}
           ></Route>
-          <Route path="/watchlist" element={<WatchList />}></Route>
-          <Route path="/readlist" element={<ReadList />}></Route>
+          <Route
+            path="/watchlist"
+            element={<WatchList token={token} popup={changePopup} />}
+          ></Route>
+          <Route
+            path="/readlist"
+            element={<ReadList token={token} popup={changePopup} />}
+          ></Route>
         </Routes>
       </Router>
       <Popup data={popup} setTrigger={SetPopup} />

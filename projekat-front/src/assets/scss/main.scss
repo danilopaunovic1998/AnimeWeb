@@ -239,11 +239,17 @@ header {
 
 .myform-group a {
     
-    font-size: 30px;
+    font-size: 25px;
     color: #3263aa !important;
 
 }
-.myButton {
+.myform-group h3 {
+    
+    font-size: 25px;
+    color: #32aa8e !important;
+
+}
+ .myButton {
     color: white; 
     font-size: 25px; 
     width: 100%;
@@ -252,9 +258,80 @@ header {
     border-radius: 2px; 
     font: normal 23px Tahoma, Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, #3263aa 50%, #3263aa 100%);
-    border: 2px solid rgb(28, 110, 164); display: inline-block;}
+    border: 2px solid rgb(28, 110, 164); display: inline-block;
+    }
     .myButton:hover {
     background: #1C6EA4; }
     .myButton:active {
     background: #144E75; }
+
+    .main-list-div {
+        flex: 1 1 0%;
+		padding: 0px 16px;
+        background-color: black;
+        
+        h1 {
+            text-align: center;
+            color: #3263aa;
+            padding-top: 10px;
+        }
+        .list-div {
+            display: flex;
+			flex-wrap: wrap;
+			margin-top: 32px;
+			margin: 32px -8px 0px;
+            .cards {
+                flex: 1 1 33.333%;
+                position: relative;
+				max-width: 25%;
+				padding: 16px 8px;
+                text-align: center;
+                align-items: center;
+
+                a {
+					text-decoration: none;
+				}
+                
+                figure {
+                    display: block;
+					margin-bottom: 16px;
+                    color: white;
+                    
+                    img {
+						display: block;
+						width: 100%;
+						height: 350px;
+						object-fit: cover;
+						border-radius: 16px;
+						box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.15);
+
+					}
+                    
+                }
+                h3 {
+
+                    color: #3263aa;
+                    padding-bottom: 20px;
+                }
+                button {
+                    
+                    position: absolute;
+                    left: 10%;
+                    bottom: 0;
+                    color: white; 
+                    font-size: 25px; 
+                    width: 80%;
+                    line-height: 23px; 
+                    border-radius: 2px; 
+                    font: normal 23px Tahoma, Arial, Helvetica, sans-serif;
+                    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, #3263aa 50%, #3263aa 100%);
+                    border: 2px solid rgb(28, 110, 164); display: inline-block;              
+                }
+                button:hover {
+                    background: #1C6EA4; }
+                button:active {
+                    background: #144E75; }
+            }
+        }
+    }
 

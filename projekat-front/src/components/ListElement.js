@@ -22,18 +22,20 @@ function ListElement({ element_id, page }) {
   }, []);
 
   return (
-    <div>
-      <div className="cards">
+    <div className="cards">
+      <a>
         {element == null ? (
           <></>
         ) : (
           <>
-            <img src={element.img}></img>
-            <h3>{element.title}</h3>
+            <figure>
+              <img src={element.img}></img>
+            </figure>
+            <h3 className="title">{element.title}</h3>
             <button>Remove</button>
           </>
         )}
-      </div>
+      </a>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LoginForm({ addToken, popup }) {
   const [userData, SetUserData] = useState({
@@ -68,7 +69,12 @@ function LoginForm({ addToken, popup }) {
           ></input>
         </div>
         <div className="myform-group">
-          <a>Forgot pasword?</a>
+          <h3>
+            You dont have an acount?<> </>
+            <Link className="a" to={"/register"}>
+              Register.
+            </Link>
+          </h3>
         </div>
         <div className="myform-group">
           <button className="myButton" type="submit" id="login">
