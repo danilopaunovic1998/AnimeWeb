@@ -4,6 +4,7 @@ import api from "../services/jikenAPI";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Comments from "../components/comments/Comments";
 
 function DisplayElement({ token, popup }) {
   let navigate = useNavigate();
@@ -73,6 +74,7 @@ function DisplayElement({ token, popup }) {
             </button>
           </div>
         </div>
+        <Comments anime_id={element.id} />
       </div>
     </div>
   );

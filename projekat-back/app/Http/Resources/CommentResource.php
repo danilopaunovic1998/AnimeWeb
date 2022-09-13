@@ -16,6 +16,13 @@ class CommentResource extends JsonResource
     public static $wrap = 'comment';
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->resource->id,
+            "body" => $this->resource->body,
+            "username" => $this->resource->username,
+            "anime_id" => $this->resource->anime_id,
+            "parent_id" => $this->resource->parent_id,
+            'created_at' => $this->resource->created_at,
+        ];
     }
 }

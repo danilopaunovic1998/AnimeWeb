@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ReadListController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\WatchListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/comments/{anime}', [CommentController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('profile', function (Request $request) {
