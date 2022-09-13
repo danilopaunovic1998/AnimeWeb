@@ -74,7 +74,7 @@ function DisplayElement({ token, popup }) {
             </button>
           </div>
         </div>
-        <Comments anime_id={element.id} />
+        <Comments element_id={element.id} />
       </div>
     </div>
   );

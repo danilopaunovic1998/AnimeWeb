@@ -4,24 +4,24 @@ import axios from "axios";
 import FormData from "form-data";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
-function Comments({ anime_id }) {
+function Comments({ element_id }) {
   const [comments, setComments] = useState([]);
   const rootComments = comments.filter((comment) => comment.parent_id === null);
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/comments/" + anime_id)
+      .get("http://127.0.0.1:8000/api/comments/" + element_id)
       .then((response) => {
         setComments(response.data.comments);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, [anime_id]);
+  }, [element_id]);
   const addComment = (text, parent_id) => {
     var data = new FormData();
     data.append("text", text);
     data.append("parent_id", parent_id);
-    data.append("anime_id", anime_id);
+    data.append("anime_id", element_id);
 
     var config = {
       method: "post",
