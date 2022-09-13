@@ -34,5 +34,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/profile/readlist/{manga}', [ReadListController::class, 'store']);
     Route::delete('/profile/readlist/{manga}', [ReadListController::class, 'destroy']);
 
+    Route::post('/profile/comments/add', [CommentController::class, 'store']);
+
     Route::post('/logout', [AuthController::class, 'logout']);
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Resources\CommentCollection;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -37,7 +38,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment;
+
+        $comment->body = $request->text;
+        if ($request->parent_id == "" || $request->parent_id == null)
+            $comment->parent_id = null;
+        else
+            $comment->parent_id = $request->parent_id;
+        $comment->anime_id = $request->anime_id;
+        $comment->user_id = Auth::user()->id;
+        $comment->username = Auth::user()->username;
+
+        $comment->save();
+        return response()->json(["comment" => $comment]);
     }
 
     /**
