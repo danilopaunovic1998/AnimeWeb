@@ -6,6 +6,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Resources\CommentCollection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -93,8 +94,8 @@ class CommentController extends Controller
      * @param  \App\Models\Coment  $coment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $coment)
+    public function destroy($comment)
     {
-        //
+        $deleted = DB::table('comments')->where('id', '=', $comment)->delete();
     }
 }

@@ -22,6 +22,7 @@ class CommentResource extends JsonResource
             "username" => $this->resource->username,
             "anime_id" => $this->resource->anime_id,
             "parent_id" => $this->resource->parent_id,
+            "user_id" => $this->resource->user_id,
             'created_at' => $this->resource->created_at,
         ];
     }
