@@ -5,7 +5,7 @@ function CommentForm({ handleSubmit, submitLable }) {
   const isTextareaDisabled = text.length === 0;
   const onSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(text, "");
+    handleSubmit(text);
     setText("");
   };
   return (

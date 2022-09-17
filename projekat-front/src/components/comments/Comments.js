@@ -8,6 +8,7 @@ function Comments({ element_id }) {
   const [comments, setComments] = useState([]);
   const rootComments = comments.filter((comment) => comment.parent_id === null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [activeComment, setActiveComment] = useState(null);
 
   const deleteHandler = (commentId) => {
     var config = {
@@ -57,7 +58,7 @@ function Comments({ element_id }) {
         console.log(error);
       });
   }, [element_id]);
-  const addComment = (text, parent_id) => {
+  const addComment = (text, parent_id = null) => {
     var data = new FormData();
     data.append("text", text);
     data.append("parent_id", parent_id);
@@ -74,8 +75,12 @@ function Comments({ element_id }) {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data.comment));
-        setComments([response.data.comment, ...comments]);
+        console.log("novi komentar");
+        //console.log(JSON.stringify(response.data.comment));
+        const pom = [response.data.comment, ...comments];
+        console.log(pom);
+        setComments(pom);
+        setActiveComment(null);
       })
       .catch(function (error) {
         console.log(error);
@@ -86,10 +91,10 @@ function Comments({ element_id }) {
       .filter((comment) => comment.parent_id === commentid)
       .sort(
         (a, b) =>
-          new Date(a.created_at).getTime() -
-          new DataTransfer(b.created_at).getTime()
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
       );
   };
+  console.log("Ovo su komentari");
   console.log(comments);
   console.log(rootComments);
   return (
@@ -114,6 +119,9 @@ function Comments({ element_id }) {
             replies={getReplies(rootComment.id)}
             loggedIn={loggedIn}
             deleteHandler={deleteHandler}
+            activeComment={activeComment}
+            setActiveComment={setActiveComment}
+            addComment={addComment}
           />
         ))}
       </div>

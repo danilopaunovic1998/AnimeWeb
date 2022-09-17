@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CommentForm from "./CommentForm";
 
-function Comment({ comment, replies, loggedIn, deleteHandler }) {
+function Comment({
+  comment,
+  replies,
+  loggedIn,
+  deleteHandler,
+  addComment,
+  activeComment,
+  setActiveComment,
+  parentId = null,
+}) {
   const canReply = Boolean(window.sessionStorage.getItem("auth_token"));
-  const canEdit = loggedIn == comment.user_id;
-  const canDelete = loggedIn == comment.user_id;
+  const canEdit = loggedIn === comment.user_id;
+  const canDelete = loggedIn === comment.user_id;
   const createdAt = new Date(comment.created_at).toLocaleDateString();
+  const isReplying =
+    activeComment &&
+    activeComment.type === "replying" &&
+    activeComment.id === comment.id;
+  const isEditing =
+    activeComment &&
+    activeComment.type === "editing" &&
+    activeComment.id === comment.id;
+  const replyId = parentId ? parentId : comment.id;
   //console.log(canEdit + comment.username);
   return (
     <div className="comment">
@@ -18,8 +37,26 @@ function Comment({ comment, replies, loggedIn, deleteHandler }) {
       </div>
       <div className="comment-text">{comment.body}</div>
       <div className="comment-actions">
-        {canReply && <div className="comment-action">Reply</div>}
-        {canEdit && <div className="comment-action">Edit</div>}
+        {canReply && (
+          <div
+            className="comment-action"
+            onClick={() =>
+              setActiveComment({ id: comment.id, type: "replying" })
+            }
+          >
+            Reply
+          </div>
+        )}
+        {canEdit && (
+          <div
+            className="comment-action"
+            onClick={() =>
+              setActiveComment({ id: comment.id, type: "editing" })
+            }
+          >
+            Edit
+          </div>
+        )}
         {canDelete && (
           <div
             className="comment-action"
@@ -29,6 +66,12 @@ function Comment({ comment, replies, loggedIn, deleteHandler }) {
           </div>
         )}
       </div>
+      {isReplying && (
+        <CommentForm
+          submitLable="Reply"
+          handleSubmit={(text) => addComment(text, replyId)}
+        />
+      )}
 
       {replies.length > 0 && (
         <div className="replies">
@@ -37,8 +80,12 @@ function Comment({ comment, replies, loggedIn, deleteHandler }) {
               comment={reply}
               key={reply.id}
               replies={[]}
-              canEdit={loggedIn}
+              loggedIn={loggedIn}
+              addComment={addComment}
+              parentId={comment.id}
               deleteHandler={deleteHandler}
+              activeComment={activeComment}
+              setActiveComment={setActiveComment}
             ></Comment>
           ))}
         </div>

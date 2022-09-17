@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText("body");
             $table->integer("user_id");
             $table->integer("anime_id");
-            $table->integer("parent_id")->nullable();
+            $table->integer("parent_id")->nullable()->default(null);
             $table->timestamps();
         });
     }

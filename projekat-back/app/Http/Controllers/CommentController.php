@@ -42,10 +42,11 @@ class CommentController extends Controller
         $comment = new Comment;
 
         $comment->body = $request->text;
-        if ($request->parent_id == "" || $request->parent_id == null)
+        if ($request->parent_id == 'null' || $request->parent_id == "") {
             $comment->parent_id = null;
-        else
-            $comment->parent_id = $request->parent_id;
+        } else $comment->parent_id = $request->parent_id;
+
+
         $comment->anime_id = $request->anime_id;
         $comment->user_id = Auth::user()->id;
         $comment->username = Auth::user()->username;
@@ -97,5 +98,6 @@ class CommentController extends Controller
     public function destroy($comment)
     {
         $deleted = DB::table('comments')->where('id', '=', $comment)->delete();
+        $deleted_childs = DB::table('comments')->where('parent_id', '=', $comment)->delete();
     }
 }
