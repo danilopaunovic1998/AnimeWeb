@@ -66,35 +66,28 @@ class CommentController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Coment  $coment
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Comment $coment)
     {
         //
     }
-
     /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Coment  $coment
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $coment)
+    public function update(Request $request, $comment_id)
     {
-        //
+        $data = $request->validate([
+            'body' => "string"
+        ]);
+        $comment = Comment::find($comment_id);
+        if ($comment) {
+            $comment->update($data);
+            return response()->json(['data' => $comment, "data2" => $data]);
+        } else {
+            return response()->json(['message' => 'comment not found']);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Coment  $coment
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($comment)
     {
         $deleted = DB::table('comments')->where('id', '=', $comment)->delete();

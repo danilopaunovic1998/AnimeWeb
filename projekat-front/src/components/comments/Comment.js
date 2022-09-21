@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import CommentForm from "./CommentForm";
 import userimg from "../../assets/images/user-icon.png";
 function Comment({
@@ -10,11 +8,12 @@ function Comment({
   addComment,
   activeComment,
   setActiveComment,
+  updateComment,
   parentId = null,
 }) {
   const canReply = Boolean(window.sessionStorage.getItem("auth_token"));
-  const canEdit = loggedIn == true;
-  const canDelete = loggedIn == true;
+  const canEdit = loggedIn === true;
+  const canDelete = loggedIn === true;
   const createdAt = new Date(comment.created_at).toLocaleDateString();
   const isReplying =
     activeComment &&
@@ -36,7 +35,19 @@ function Comment({
           <div className="comment-author">{comment.username}</div>
           <div className="date">{createdAt}</div>
         </div>
-        <div className="comment-text">{comment.body}</div>
+        {!isEditing && <div className="comment-text">{comment.body}</div>}
+        {isEditing && (
+          <CommentForm
+            submitLable="Update"
+            hasCancelButton
+            initialText={comment.body}
+            handleSubmit={(text) => updateComment(text, comment.id)}
+            handleCancle={(e) => {
+              e.preventDefault();
+              setActiveComment(null);
+            }}
+          ></CommentForm>
+        )}
         <div className="comment-actions">
           {canReply && (
             <div
@@ -82,6 +93,7 @@ function Comment({
                 key={reply.id}
                 replies={[]}
                 loggedIn={loggedIn}
+                updateComment={updateComment}
                 addComment={addComment}
                 parentId={comment.id}
                 deleteHandler={deleteHandler}

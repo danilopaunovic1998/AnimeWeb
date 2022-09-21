@@ -10,6 +10,35 @@ function Comments({ element_id }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [activeComment, setActiveComment] = useState(null);
 
+  const updateComment = (text, commentId) => {
+    var data = JSON.stringify({
+      body: text,
+    });
+
+    var config = {
+      method: "put",
+      url: "http://127.0.0.1:8000/api/profile/comments/edit/" + commentId,
+      headers: {
+        Authorization: "Bearer " + window.sessionStorage.getItem("auth_token"),
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        const updatedComments = comments.map((comment) => {
+          if (comment.id === commentId) {
+            return { ...comment, body: text };
+          }
+          return comment;
+        });
+        setComments(updatedComments);
+        setActiveComment(null);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   const deleteHandler = (commentId) => {
     var config = {
       method: "delete",
@@ -77,9 +106,7 @@ function Comments({ element_id }) {
       .then(function (response) {
         console.log("novi komentar");
         //console.log(JSON.stringify(response.data.comment));
-        const pom = [response.data.comment, ...comments];
-        console.log(pom);
-        setComments(pom);
+        setComments([response.data.comment, ...comments]);
         setActiveComment(null);
       })
       .catch(function (error) {
@@ -121,6 +148,7 @@ function Comments({ element_id }) {
             deleteHandler={deleteHandler}
             activeComment={activeComment}
             setActiveComment={setActiveComment}
+            updateComment={updateComment}
             addComment={addComment}
           />
         ))}
